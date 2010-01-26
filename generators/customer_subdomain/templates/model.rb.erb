@@ -1,0 +1,4 @@
+class <%= model.classify %> < ActiveRecord::Base
+  validates_presence_of :<%= field %>
+  validates_uniqueness_of :<%= field %>
+end

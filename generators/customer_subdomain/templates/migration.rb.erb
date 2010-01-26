@@ -1,0 +1,16 @@
+class Create<%= model.classify %> < ActiveRecord::Migration
+  def self.up
+    create_table :<%= model.pluralize %> do |t|
+      t.string :name
+      <%- if field != "name" -%>
+      t.string :<%= field %>
+      <%- end -%>
+
+      t.timestamps
+    end
+  end
+
+  def self.down
+    drop_table :<%= model.pluralize %>
+  end
+end

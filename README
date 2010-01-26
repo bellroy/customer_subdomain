@@ -1,0 +1,44 @@
+CustomerSubdomain
+=================
+
+This plugin lets you handle separate subdomain for your customers.
+The generator assumes that you run RSpec (with Remarkable). Currently RSpec is the only test framework supported.
+
+
+Installation
+============
+
+Please run the following generator:
+
+script/generate customer_subdomain
+
+The generator assumes you want to create a model (by default 'Customer'). If you already have a model,
+please specify '--no-model' as an option.
+
+Here is a list of all available options:
+
+--model-name=<model>        Use a different model (Default: Customer)
+--subdomain-field=<field>   Use a different field to map against the subdomain (Default: subdomain)
+--no-model                  Don't generate the model files (class, migration, spec, ...)
+
+
+Examples:
+
+- generate subdomain code with defaults (model: Customer, subdomain field: subdomain)
+script/generate customer_subdomain
+
+- generate code with changed model
+script/generate customer_subdomain --model-name=Account
+
+- don't generate model related code, but use different model in lib's
+script/generate customer_subdomain --no-model --model-name=Account
+
+
+Usage
+=======
+
+The helper method 'current_customer' is available in all controllers, helpers and views.
+It returns an instance of the Customer matching the subdomain.
+
+
+Copyright (c) 2010 [Tricycle IT], released under the MIT license
