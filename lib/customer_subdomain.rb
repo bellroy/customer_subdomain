@@ -14,7 +14,10 @@ class CustomerSubdomain
 
     private
 
-      def current_customer; @customer ||= Customer.send("find_by_#{CustomerSubdomain.field_name}", request.subdomains.first) end
+      def current_customer
+        @model ||= CustomerSubdomain.model_name.to_s.classify.constantize
+        @customer ||= @model.send("find_by_#{CustomerSubdomain.field_name}", request.subdomains.first)
+      end
     end
   end
 end
