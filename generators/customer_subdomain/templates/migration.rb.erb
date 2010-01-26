@@ -1,4 +1,4 @@
-class Create<%= model.classify %> < ActiveRecord::Migration
+class Create<%= model.pluralize.camelize %> < ActiveRecord::Migration
   def self.up
     create_table :<%= model.pluralize %> do |t|
       t.string :name
